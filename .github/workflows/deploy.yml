@@ -22,6 +22,7 @@ jobs:
       - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
       - run: git config --global user.name "someone"
       - run: git config --global user.email "someone@somewhere"
+      - run: git remote -v
       - run: npm install
       - run: npm i -g hexo-cli
       - run: git submodule update --init
