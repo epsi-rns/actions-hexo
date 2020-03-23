@@ -17,10 +17,10 @@ Please refer to original tutorial:
 
 Since this use github pages, we should set the `root` as below example
 
-This travis example has **_config.yml** as below
+This example has **_config.yml** as below
 
 ```
-root          : /travis-hexo/
+root          : /actions-hexo/
 ```
 
 And has **_config_local.yml** as below
