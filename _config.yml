@@ -92,5 +92,5 @@ pagination_dir: page
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/epsi-rns/actions-hexo
+  repo: git@github.com:epsi-rns/actions-hexo.git
   branch: gh-pages
