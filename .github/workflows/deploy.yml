@@ -25,5 +25,5 @@ jobs:
       - run: npm install
       - run: npm i -g hexo-cli
       - run: git submodule update --init
-      - run: cp deploy/_config.yml themes/next/_config.yml
+      # run: cp deploy/_config.yml themes/next/_config.yml
       - run: hexo deploy -g
