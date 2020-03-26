@@ -11,18 +11,26 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
-      - run: mkdir -p ~/.ssh/
-      - run: echo "${{secrets.DEPLOY_KEY}}" > ~/.ssh/id_rsa
-      - run: chmod 600 ~/.ssh/id_rsa
-      - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
-      - run: git config --global user.name "someone"
-      - run: git config --global user.email "someone@somewhere"
-      - run: git remote -v
-      - run: npm install
-      - run: npm i -g hexo-cli
-      - run: hexo deploy -g
+    - name: Checkout to master
+      uses: actions/checkout@v2
+    - name: Set up NodeJS 12
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+        registry-url: https://registry.npmjs.org/
+    - name: Setup Secret Secure Shell
+      run: |
+        mkdir -p ~/.ssh/
+        echo "${{secrets.DEPLOY_KEY}}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
+    - name: Prepare Git Initialization
+      run: |
+        git config --global user.name "someone"
+        git config --global user.email "someone@somewhere"
+    - name: Install and Configure Dependencies
+      run: npm install
+    - name: Generate Hexo Static Files
+      run: npm i -g hexo-cli
+    - name: Deploy Static Files to gh-pages Branch
+      run: hexo deploy -g
