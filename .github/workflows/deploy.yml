@@ -25,5 +25,4 @@ jobs:
       - run: git remote -v
       - run: npm install
       - run: npm i -g hexo-cli
-      - run: git submodule update --init
       - run: hexo deploy -g
